@@ -96,6 +96,9 @@ def main():
     tg_bot_token = os.environ['TG_BOT_TOKEN']
     chat_id = os.environ['TG_CHAT_ID']
     bot = telegram.Bot(token=tg_bot_token)
+    fetch_spacex_last_launch()
+    get_nasa_day_pictures(nasa_apitoken)
+    get_nasa_epic_pictures(nasa_apitoken)
 
     while True:
         all_folders = ['earth_epic_photos', 'images', 'nasa_dayly']

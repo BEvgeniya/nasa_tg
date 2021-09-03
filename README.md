@@ -33,4 +33,7 @@ TG_CHAT_ID - Создайте телеграм канал, затем напиш
 
 ## Run
 
-Запускается на Linux(Python 3) или Windows.
+Запускается на Linux(Python 3) или Windows:
+```bash
+python main.py
+```

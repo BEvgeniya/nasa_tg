@@ -9,16 +9,13 @@
 ### Requirements
 
 
-Python3 должен быть уже установлен. Затем используйте pip (или pip3, если есть конфликт с Python2) для установки зависимостей:
-1) requests
-2) telegram
+Python3 должен быть уже установлен. Затем используйте pip (или pip3, если есть конфликт с Python2) для установки зависимостей.
 
-А также токен Nasa API и API-токен Telegram Bot (можно получить у @BotFather).
 
 ```bash
 pip install -r requirements.txt
 ```
-
+А также потребуются токен Nasa API и API-токен Telegram Bot (можно получить у @BotFather).
 
 ### Environment variables
 

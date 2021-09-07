@@ -21,7 +21,7 @@ def load_picture(url, path):
 
 
 def fetch_spacex_last_launch(folder):
-    os.makedirs(folder)
+    os.makedirs(folder, exist_ok=True)
     spacex_url = 'https://api.spacexdata.com/v4/launches/latest'
     response = requests.get(spacex_url)
     response.raise_for_status()
@@ -39,7 +39,7 @@ def get_nasa_day_pictures(folder, nasa_api_token):
         'api_key': nasa_api_token,
         'count': 30
     }
-    os.makedirs(folder)
+    os.makedirs(folder, exist_ok=True)
     url = 'https://api.nasa.gov/planetary/apod'
     response = requests.get(url, params=params)
     response.raise_for_status()
@@ -66,7 +66,7 @@ def get_file_extension(url):
 
 
 def get_nasa_epic_pictures(folder, nasa_api_token):
-    os.makedirs(folder)
+    os.makedirs(folder, exist_ok=True)
     params = {
         'api_key': nasa_api_token
     }

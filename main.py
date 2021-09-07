@@ -30,7 +30,7 @@ def fetch_spacex_last_launch(folder):
         spacex_image_links = launch['links']['flickr']['original']
         if spacex_image_links:
             for index, image_url in enumerate(spacex_image_links):
-                filename = f'{folder}/space{str(index)}.jpg'
+                filename = f'{folder}/space{index}.jpg'
                 load_picture(image_url, filename)
 
 
@@ -54,7 +54,7 @@ def get_nasa_day_pictures(folder, nasa_api_token):
     for index, image_url in enumerate(image_urls):
         extension = get_file_extension(image_url)
         if extension:
-            filename = f'{folder}/nasa_day{str(index)}{extension}'
+            filename = f'{folder}/nasa_day{index}{extension}'
             load_picture(image_url, filename)
 
 
@@ -79,7 +79,7 @@ def get_nasa_epic_pictures(folder, nasa_api_token):
         image_date = datetime.datetime.fromisoformat(image_info['date'])
         base_url = f'https://api.nasa.gov/EPIC/archive/natural/{image_date.strftime("%x")}'\
         '/png/{image_name}.png?api_key={nasa_api_token}'
-        path = f'{folder}/planet{str(index)}.png'
+        path = f'{folder}/planet{index}.png'
         load_picture(base_url, path)
 
 

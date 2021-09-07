@@ -77,9 +77,9 @@ def get_nasa_epic_pictures(folder, nasa_api_token):
     response = requests.get(url, params=params)
     response.raise_for_status()
 
-    for index, image_info in enumerate(response.json()):
-        image_name = image_info['image']
-        image_date = datetime.datetime.fromisoformat(image_info['date'])
+    for index, image in enumerate(response.json()):
+        image_name = image['image']
+        image_date = datetime.datetime.fromisoformat(image['date'])
         base_url = f'https://api.nasa.gov/EPIC/archive/natural/'\
         '{image_date.strftime("%x")}/png/{image_name}.png'
         path = f'{folder}/planet{index}.png'

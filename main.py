@@ -22,7 +22,7 @@ def load_picture(url, path):
 
 def fetch_spacex_last_launch(folder):
     os.makedirs(folder)
-    spacex_url = 'https://api.spacexdata.com/v4/launches'
+    spacex_url = 'https://api.spacexdata.com/v4/launches/latest'
     response = requests.get(spacex_url)
     response.raise_for_status()
     launches = response.json()

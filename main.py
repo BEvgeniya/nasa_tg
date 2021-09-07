@@ -87,7 +87,7 @@ def get_nasa_epic_pictures(folder, nasa_api_token):
 
 
 def post_photos(all_folders, bot):
-    chat_id = os.environ['TG_CHAT_ID']
+    chat_id = '-1001221235783'
     while True:
         for folder in all_folders:
             for file in listdir(folder):

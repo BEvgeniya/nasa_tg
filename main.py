@@ -86,8 +86,7 @@ def get_nasa_epic_pictures(folder, nasa_api_token):
         load_picture(base_url, path, params)
 
 
-def post_photos(all_folders, bot):
-    chat_id = '-1001221235783'
+def post_photos(all_folders, bot, chat_id):
     while True:
         for folder in all_folders:
             for file in listdir(folder):
@@ -102,12 +101,13 @@ def main():
     tg_bot_token = os.environ['TG_BOT_TOKEN']
     bot = telegram.Bot(token=tg_bot_token)
     all_folders = ['earth_epic_photos', 'images', 'nasa_dayly']
+    chat_id = os.environ['TG_CHAT_ID']
         
     get_nasa_day_pictures(all_folders[2], nasa_api_token)
     get_nasa_epic_pictures(all_folders[0], nasa_api_token)
     fetch_spacex_last_launch(all_folders[1])
     
-    post_photos(all_folders, bot)
+    post_photos(all_folders, bot, chat_id)
 
 if __name__ == '__main__':
     main()

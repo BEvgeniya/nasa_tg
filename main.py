@@ -16,7 +16,7 @@ def load_picture(url, path, params):
     
     response = requests.get(url, headers=headers)
     if params:
-        response = request.get(url, headers=headers, params=params)
+        response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
 
     with open(path, 'wb') as file:
@@ -34,7 +34,7 @@ def fetch_spacex_last_launch(folder):
         if spacex_image_links:
             for index, image_url in enumerate(spacex_image_links):
                 filename = f'{folder}/space{index}.jpg'
-                load_picture(image_url, filename, '')
+                load_picture(image_url, filename, None)
 
 
 def get_nasa_day_pictures(folder, nasa_api_token):
@@ -58,7 +58,7 @@ def get_nasa_day_pictures(folder, nasa_api_token):
         extension = get_file_extension(image_url)
         if extension:
             filename = f'{folder}/nasa_day{index}{extension}'
-            load_picture(image_url, filename, '')
+            load_picture(image_url, filename, None)
 
 
 def get_file_extension(url):

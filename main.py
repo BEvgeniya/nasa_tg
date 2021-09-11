@@ -13,7 +13,7 @@ def load_picture(url, path, params):
         'User-Agent': 'curl',
         'Accept-Language': 'ru-RU'
     }
-    
+
     response = requests.get(url, headers=headers)
     if params:
         response = requests.get(url, headers=headers, params=params)
@@ -30,7 +30,7 @@ def fetch_spacex_last_launch(folder):
     response.raise_for_status()
     launch = response.json()
     spacex_image_links = launch['links']['flickr']['original']
-    
+
     if spacex_image_links:
         for index, image_url in enumerate(spacex_image_links):
             filename = f'{folder}/space{index}.jpg'
@@ -96,13 +96,11 @@ def post_photos(all_folders, bot, chat_id):
 
 
 def main():
-    
     nasa_api_token = os.environ['NASA_API_TOKEN']
     tg_bot_token = os.environ['TG_BOT_TOKEN']
     bot = telegram.Bot(token=tg_bot_token)
     all_folders = ['earth_epic_photos', 'images', 'nasa_dayly']
     chat_id = os.environ['TG_CHAT_ID']
-        
     get_nasa_day_pictures(all_folders[2], nasa_api_token)
     get_nasa_epic_pictures(all_folders[0], nasa_api_token)
     fetch_spacex_last_launch(all_folders[1])
@@ -111,4 +109,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

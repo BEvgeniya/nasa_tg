@@ -28,13 +28,13 @@ def fetch_spacex_last_launch(folder):
     spacex_url = 'https://api.spacexdata.com/v4/launches/latest'
     response = requests.get(spacex_url)
     response.raise_for_status()
-    launches = response.json()
-    for launch in launches:
-        spacex_image_links = launch['links']['flickr']['original']
-        if spacex_image_links:
-            for index, image_url in enumerate(spacex_image_links):
-                filename = f'{folder}/space{index}.jpg'
-                load_picture(image_url, filename, None)
+    launch = response.json()
+    spacex_image_links = launch['links']['flickr']['original']
+    
+    if spacex_image_links:
+        for index, image_url in enumerate(spacex_image_links):
+            filename = f'{folder}/space{index}.jpg'
+            load_picture(image_url, filename, None)
 
 
 def get_nasa_day_pictures(folder, nasa_api_token):

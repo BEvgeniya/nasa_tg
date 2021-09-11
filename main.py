@@ -14,11 +14,8 @@ def load_picture(url, path, params):
         'Accept-Language': 'ru-RU'
     }
 
-    response = requests.get(url, headers=headers)
-    if params:
-        response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
-
     with open(path, 'wb') as file:
         return file.write(response.content)
 

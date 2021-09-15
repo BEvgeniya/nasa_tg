@@ -77,8 +77,8 @@ def get_nasa_epic_pictures(folder, nasa_api_token):
     for index, image in enumerate(response.json()):
         image_name = image['image']
         image_date = datetime.datetime.fromisoformat(image['date'])
-        base_url = f'https://api.nasa.gov/EPIC/archive/natural/'\
-        '{image_date.strftime("%x")}/png/{image_name}.png'
+        base_url = 'https://api.nasa.gov/EPIC/archive/natural/'\
+            f'{image_date.strftime("%x")}/png/{image_name}.png'
         path = f'{folder}/planet{index}.png'
         load_picture(base_url, path, params)
 
@@ -101,7 +101,6 @@ def main():
     get_nasa_day_pictures(all_folders[2], nasa_api_token)
     get_nasa_epic_pictures(all_folders[0], nasa_api_token)
     fetch_spacex_last_launch(all_folders[1])
-    
     post_photos(all_folders, bot, chat_id)
 
 if __name__ == '__main__':
